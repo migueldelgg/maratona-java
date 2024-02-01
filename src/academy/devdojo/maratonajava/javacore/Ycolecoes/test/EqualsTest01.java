@@ -7,7 +7,6 @@ public class EqualsTest01 {
         Smartphone s1 = new Smartphone("1ABC1", "Iphone");
         Smartphone s2 = new Smartphone("1ABC1", "Iphone");
         System.out.println(s1.equals(s2));
-
     }
 
 }

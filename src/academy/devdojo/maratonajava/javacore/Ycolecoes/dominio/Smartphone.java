@@ -26,17 +26,19 @@ public class Smartphone {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
+    // Reflexivo? x.equals(x) tem que ser true para tudo que for diferente de null
+    // Simétrico: para x e y diferentes de null, se x.equals(y) == true, logo, y.equals(x) == true
+    // Transitividade: para x,y,z diferentes de null, se x.equals(y) == true, e x.equals(z) == true, logo, y.equals(z) == true
+    // para x diferente de null, x.equals(null) tem que retornar false
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Smartphone that = (Smartphone) o;
-        return Objects.equals(serialNumber, that.serialNumber) && Objects.equals(marca, that.marca);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(serialNumber, marca);
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if(this == obj) return true;
+        if(this.getClass() != obj.getClass()) return false;
+        Smartphone smartphone = (Smartphone) obj;
+        return serialNumber != null && serialNumber.equals(smartphone.serialNumber);
+        // Nesse caso deve se tomar cuidado com a regra de negocio
+        // Como voce considera que dois objetos são os mesmos?
+        // Quando todos os atributos são iguais ? Ou quando apenas o id é igual? (nesse caso fizemos pelo serialNumber)
     }
 }
